@@ -1,0 +1,7 @@
+/vendor/
+/node_modules/
+/.wp-env/
+/.idea/
+/.vscode/
+.DS_Store
+.phpunit.cache/
