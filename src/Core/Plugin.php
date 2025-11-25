@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Ehz\WcMultistepOrder\Core;
 
 use Ehz\WcMultistepOrder\Support\Assets;
+use Ehz\WcMultistepOrder\Support\CartOverlay;
 use Ehz\WcMultistepOrder\Support\MultiStepCheckout;
 
 class Plugin
@@ -13,7 +14,8 @@ class Plugin
 
     public function __construct(
         private readonly MultiStepCheckout $checkout,
-        private readonly Assets $assets
+        private readonly Assets $assets,
+        private readonly CartOverlay $cartOverlay
     ) {
     }
 
@@ -30,6 +32,7 @@ class Plugin
 
         $this->checkout->register();
         $this->assets->register();
+        $this->cartOverlay->register();
     }
 
     private function isWooCommerceActive(): bool
