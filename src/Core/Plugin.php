@@ -7,6 +7,7 @@ namespace Ehz\WcMultistepOrder\Core;
 use Ehz\WcMultistepOrder\Support\Assets;
 use Ehz\WcMultistepOrder\Support\CartOverlay;
 use Ehz\WcMultistepOrder\Support\MultiStepCheckout;
+use Ehz\WcMultistepOrder\Support\ShippingStep;
 
 class Plugin
 {
@@ -15,7 +16,8 @@ class Plugin
     public function __construct(
         private readonly MultiStepCheckout $checkout,
         private readonly Assets $assets,
-        private readonly CartOverlay $cartOverlay
+        private readonly CartOverlay $cartOverlay,
+        private readonly ShippingStep $shippingStep
     ) {
     }
 
@@ -33,6 +35,7 @@ class Plugin
         $this->checkout->register();
         $this->assets->register();
         $this->cartOverlay->register();
+        $this->shippingStep->register();
     }
 
     private function isWooCommerceActive(): bool
